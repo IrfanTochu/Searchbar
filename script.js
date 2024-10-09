@@ -1,42 +1,31 @@
-function searchFunction() {
-    let input = document.getElementById('cari').value;
-    let resultsContainer = document.getElementById('searchResults');
-    
-  
-    // You can implement your search logic here
-    // For demonstration, let's just display the search query
-    resultsContainer.innerHTML = '<p>Search query: ' + input + '</p>';
+function searchContent() {
+  // Declare variables
+  let input, filter, content, items, textValue;
+  input = document.getElementById('searchbar');
+  filter = input.value.toUpperCase();
+  content = document.getElementsByClassName('content')[0];
+  items = content.getElementsByClassName('text');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (let i = 0; i < items.length; i++) {
+      textValue = items[i].textContent || items[i].innerText;
+      if (textValue.toUpperCase().indexOf(filter) > -1) {
+          items[i].style.display = "";
+      } else {
+          items[i].style.display = "none";
+      }
   }
-  
-// Sample data for demonstration
-var data = [
-    { id: 1, name: 'Mark L. Fernando' },
-    { id: 2, name: 'Other Skills'},
-    { id: 3, name: 'education'},
-    { id: 4, name: 'Personal Skills'},
-  ];
-  
-  function searchFunction() {
-    var input = document.getElementById('searchInput').value.toLowerCase(); // Get search input and convert to lowercase
-    var resultsContainer = document.getElementById('searchResults');
-    resultsContainer.innerHTML = ''; // Clear previous results
-  
-    // Perform search
-    var results = data.filter(function(item) {
-      return item.name.toLowerCase().includes(input); // Change to any property you want to search in your data
-    });
-  
-    // Display results
-    if (results.length > 0) {
-      results.forEach(function(item) {
-        var resultElement = document.createElement('p');
-        resultElement.textContent = 'Name: ' + item.name + ', Age: ' + item.age;
-        resultsContainer.appendChild(resultElement);
-      });
-    } else {
-      var noResultElement = document.createElement('p');
-      noResultElement.textContent = 'No results found';
-      resultsContainer.appendChild(noResultElement);
-    }
+
+  // Searching in animals list
+  let animalsList = document.getElementById('list');
+  let animals = animalsList.getElementsByClassName('animals');
+
+  for (let j = 0; j < animals.length; j++) {
+      textValue = animals[j].textContent || animals[j].innerText;
+      if (textValue.toUpperCase().indexOf(filter) > -1) {
+          animals[j].style.display = "";
+      } else {
+          animals[j].style.display = "none";
+      }
   }
-  
+}
